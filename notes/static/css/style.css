@@ -1,0 +1,495 @@
+
+body{
+    background-color: lightblue;
+    text-align: center;
+    font-family: Tahoma;
+    padding: 30px;
+}
+
+h1{
+    color:red;
+}
+
+input{
+    width: 300px;
+    padding: 10px;
+    font-size: 18px;
+}
+
+button{
+    padding: 10px 20px;
+    background-color: green;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+button:hover{
+    background-color: darkgreen;
+}
+
+.note-card{
+    background-color: white;
+    padding: 20px;
+    margin: 20px auto;
+    width: 500px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px gray;
+    border: 1px solid #cccccc;
+    margin-bottom: 20px;
+
+}
+
+h3{
+    color: darkblue;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+p{
+    font-size: 18px;
+    margin-bottom: 15px;
+}
+
+hr{
+    margin: 20px 0;
+}
+
+p{
+    margin-bottom: 15px;
+}
+
+a{
+    display: inline-block;
+    padding: 8px 14px;
+    background: #4CAF50;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    margin-right: 10px;
+}
+
+
+header{
+    background: #4CAF50;
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.edit-btn{
+    background-color: #28a745;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 6px;
+    text-decoration: none;
+    margin-left: 5px;
+}
+
+.edit-btn:hover{
+    background-color: #1d7d33;
+}
+
+.delete-btn{
+    background-color: #dc3545;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 6px;
+    text-decoration: none;
+}
+
+.delete-btn:hover{
+    background-color: darkred;
+}
+
+.error{
+    background-color: #ffdddd;
+    color: red;
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+small{
+    color: gray;
+    display: block;
+    margin-top: 10px;
+    font-size: 13px;
+}
+
+.delete-btn{
+    background-color: red;
+    color: white;
+}
+
+.note-card{
+    width: 300px;
+    padding: 15px;
+    margin-bottom: 15px;
+    margin: 0;
+    transition: 0.3s;
+    box-shadow:0 8px 20px
+    rgba(0, 0, 0, 0.2);
+}
+
+.note-card:hover{
+    transform:scale(1.02);
+}
+
+button,
+a{
+    cursor: pointer;
+}
+
+.done-btn{
+    background-color: orange;
+    color: white;
+    padding:8px 15px;
+    border-radius: 8px;
+    text-decoration: none;
+    margin-left: 5px;
+}
+
+.done-btn:hover{
+    background-color: darkorange;
+}
+
+.finished{
+    opacity: 0.6;
+}
+
+.finished h3{
+    text-decoration: line-through;
+}
+
+.finished p{
+    text-decoration: line-through;
+}
+
+.dashboard{
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    margin-bottom: 25px;
+    box-shadow:0 0 10px gray;
+    text-align: center;
+}
+
+body.dark .dashboard{
+    background: #333;
+    color: white;
+}
+
+.dashboard h3{
+    margin: 10px;
+    color: darkblue;
+}
+
+.profile_card{
+    width: 500px;
+    margin: 50px auto;
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 0 15px gray;
+    text-align: center;
+}
+
+.profile_card h3{
+    margin: 18px;
+    color: darkblue;
+}
+
+.profile_card h1{
+    color: green;
+}
+
+.back-btn{
+    background-color: red;
+    color: white;
+}
+
+.pagination{
+    margin-top: 30px;
+    text-align: center;
+}
+
+.pagination a{
+    padding: 10px 18px;
+    background: royalblue;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    margin: 10px;
+}
+
+.pagination a:hover{
+    background: navy;
+}
+
+.pagination span{
+    margin: 15px;
+    font-weight: bold;
+}
+
+.message{
+    background: #d4edda;
+    color: #155724;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    font-weight: bold;
+    text-align: center;
+    border: 1px solid #c3e6cb;
+}
+
+.filters{
+    margin: 20px;
+    text-align: center;
+}
+
+.filters a{
+    background: steelblue;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 8px;
+    text-decoration: none;
+    margin: 5px;
+}
+
+.filters a:hover{
+    background: royalblue;
+}
+
+.today{
+    margin: 20px;
+    text-align: center;
+}
+
+.today a{
+    background: steelblue;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 8px;
+    text-decoration: none;
+    margin: 5px;
+}
+
+.today a:hover{
+    background: royalblue;
+}
+
+.favorite-btn{
+    background-color: gold;
+    color: black;
+    padding:8px 15px;
+    border-radius: 8px;
+    text-decoration: none;
+    margin-left: 5px;
+}
+
+.favorite-btn:hover{
+    background-color: orange;
+}
+
+.export-btn{
+    background: purple;
+    color: white;
+    padding: 10px 18px;
+    border-radius: 8px;
+    text-decoration: none;
+    margin: 5px;
+    display: inline-block;
+}
+
+.export-btn:hover{
+    background: indigo;
+}
+
+.notes-container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.last-text{
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow:0 5px 15px rgba(0, 0, 0, .2);
+    width: 350px;
+    margin: auto;
+}
+
+body.dark{
+    background: #1d1d1d;
+    color: white;
+    transition: 0.5s;
+}
+
+body.dark .note-card{
+    background: #333;
+    color: white;
+}
+
+body.dark h1,
+body.dark h2,
+body.dark h3,
+body.dark h4{
+    color: white;
+}
+
+body.dark input{
+    background: #444;
+    color: white;
+    border: 1px solid gray;
+}
+
+.delete-box{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, .5);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.delete-content{
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+}
+
+body.dark .delete-content{
+    background: #2d2d2d;
+    color: white;
+}
+
+body.dark .delete-content button{
+    color: white;
+}
+
+.title-special {
+    font-size: 40px;
+    text-align: center;
+    color: blueviolet;
+}
+
+
+#js-test-box button.active {
+    background-color: purple;
+    color: white;
+}
+
+#animation-canvas {
+    display: block;
+    margin: 20px auto;
+    border: 3px solid black;
+    background: #eeeeee;
+}
+
+.notification {
+    position: fixed;
+    top: 25px;
+    right: 25px;
+
+    padding: 15px 25px;
+
+    background: #222;
+    color: white;
+
+    border-radius: 10px;
+
+    font-size: 16px;
+    
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.25);
+
+    opacity: 1;
+    transform: translateX(0);
+
+    transition: opacity 0.5s, transform 0.5s;
+
+    z-index: 9999;
+}
+
+.notification.hide {
+    opacity: 0;
+    transform: translateX(100px);
+}
+
+.notification.success {
+    background: green;
+}
+.notification.error {
+    background: red;
+}
+.notification.warning {
+    background: orange;
+}
+
+.observer-box {
+    width: 300px;
+    margin: 300px auto;
+
+    padding: 40px;
+
+    text-align: center;
+    background: #222;
+    color: white;
+    border-radius: 15px;
+    opacity: 0;
+    transform: translateY(80px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.observer-box.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+.password-change-button {
+    display: inline-block;
+
+    margin: 15px 5px;
+
+    padding: 10px 18px;
+
+    background: #087f5b;
+
+    color: white;
+
+    text-decoration: none;
+
+    border-radius: 10px;
+
+    font-size: 14px;
+
+    transition:
+        transform 0.2s,
+        background 0.2s;
+}
+
+
+.password-change-button:hover {
+    background: #056c50;
+
+    transform: translateY(-2px);
+}
+
+
+/* ========================================= */
+/*              NEON HUNTER                  */
+/* ========================================= */

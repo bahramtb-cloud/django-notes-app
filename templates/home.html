@@ -1,0 +1,75 @@
+
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="fa">
+
+<head>
+    <meta charset="UTF-8">
+
+    <title>اولین سایت من</title>
+
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+</head>
+
+<body class="home-page">
+
+<div class="home-container">
+
+    <h1>سلام به اولین سایت من ❤️</h1>
+
+    <p>اسم من: {{ name }}</p>
+
+    <p>سن من: {{ age }}</p>
+
+    {% if is_adult %}
+
+    <p>✅ شما بالای ۱۸ سال هستید.</p>
+
+    {% else %}
+
+    <p>❌ شما زیر ۱۸ سال هستید.</p>
+
+    {% endif %}
+
+    <p>این اولین صفحه HTML من با Django است.</p>
+
+<a href="/accounts/login/?next=/notes/">
+    صفه ی نوت ها
+</a>
+
+
+
+</html>
+<div class="friends-section">
+<h2>دوستان من</h2>
+
+<ul>
+
+{% for friend in friends %}
+
+<li>{{ friend }}</li>
+
+{% endfor %}
+
+</ul>
+
+<hr>
+
+<a href="/about/">برو به صفحه درباره ما</a>
+
+<hr>
+
+<form>
+
+<input type="text" placeholder="اسمت را بنویس">
+
+<button>ارسال</button>
+
+</form>
+
+
+</div>
+</div>
+</body>
+

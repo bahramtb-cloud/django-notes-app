@@ -1,0 +1,67 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+<title>پروفایل</title>
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+<div class="profile-card">
+<h1>
+پروفایل من
+</h1>
+<hr>
+<h3>
+نام کاربری:
+{{ user.username }}
+</h3>
+<a href="/accounts/password-change/" class="password-change-button">
+    🔐 تغییر رمز عبور
+</a>
+<h3>
+خـــــوش اومـــــدی {{ user.username }}
+</h3>
+<h3>
+کل یادداشت ها:
+{{ total_notes }}
+</h3>
+<h3>
+انجام شده:
+{{ done_notes }}
+</h3>
+<h3>
+باقی مانده:
+{{ remaining_notes }}
+</h3>
+<br>
+
+<a href="/notes/"
+class="back-btn">
+بازگشت
+</a>
+
+</div>
+</body>
+</html>
+
+<hr>
+<h3>📋 تعداد یادداشت ها : {{ total_notes }}</h3>
+<h3>⭐ علاقه مندی ها : {{ favorite_notes }}</h3>
+<h3>✅ انجام شده : {{ done_notes }}</h3>
+<h3>⏳ باقی مانده : {{ remaining_notes }}</h3>
+<hr>
+
+
+{% if last_note %}
+<hr>
+<div class="last-text">
+<h3>آخرین یادداشت 📝</h3>
+<p>{{ last_note.title }}</p>
+<p>{{ last_note.text }}</p>
+<small>
+{{ last_note.created_at|date:"Y/m/d H:i" }}
+</small>
+</div>
+{% endif %}
+

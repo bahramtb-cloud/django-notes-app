@@ -1,0 +1,252 @@
+/* =========================
+   LOGIN PAGE
+========================= */
+
+body.login-page {
+    margin: 0;
+
+    min-height: 100vh;
+
+    direction: rtl;
+
+    font-family: Tahoma, Arial, sans-serif;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background:
+        radial-gradient(
+            circle at top right,
+            #ffffff 0%,
+            transparent 35%
+        ),
+        linear-gradient(
+            135deg,
+            #c9f4ef,
+            #a9ded8
+        );
+}
+
+
+/* کارت ورود */
+
+.login-container {
+    width: min(400px, 85%);
+
+    padding: 40px;
+
+    background: rgba(255, 255, 255, 0.85);
+
+    border-radius: 25px;
+
+    box-shadow:
+        0 20px 50px rgba(0, 80, 80, 0.18);
+
+    text-align: center;
+
+    backdrop-filter: blur(12px);
+
+    animation: loginAppear 0.6s ease;
+}
+
+
+/* انیمیشن ورود */
+
+@keyframes loginAppear {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(25px)
+            scale(0.97);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+    }
+}
+
+
+/* عنوان */
+
+.login-container h1 {
+    margin-bottom: 30px;
+
+    font-size: 32px;
+
+    color: #164949;
+}
+
+
+/* فرم */
+
+.login-container form {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 15px;
+}
+
+
+/* Input ها */
+
+.login-container input {
+    width: 100%;
+
+    box-sizing: border-box;
+
+    padding: 13px 15px;
+
+    border: 2px solid #c9e5e1;
+
+    border-radius: 12px;
+
+    background: #f8ffff;
+
+    font-size: 16px;
+
+    outline: none;
+
+    transition:
+        border-color 0.2s,
+        box-shadow 0.2s;
+}
+
+
+.login-container input:focus {
+    border-color: #078b65;
+
+    box-shadow:
+        0 0 0 4px rgba(7, 139, 101, 0.12);
+}
+
+
+/* دکمه ورود */
+
+.login-container button {
+    margin-top: 10px;
+
+    padding: 13px;
+
+    border: none;
+
+    border-radius: 12px;
+
+    background: #078b65;
+
+    color: white;
+
+    font-family: inherit;
+
+    font-size: 17px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s,
+        transform 0.2s,
+        box-shadow 0.2s;
+}
+
+
+.login-container button:hover {
+    background: #056c50;
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 8px 18px rgba(0, 100, 70, 0.25);
+}
+
+
+.login-container button:active {
+    transform: translateY(0);
+}
+
+
+/* پیام خطا */
+
+.login-error {
+    margin-bottom: 15px;
+
+    padding: 10px;
+
+    border-radius: 10px;
+
+    background: #ffe4e4;
+
+    color: #a50000;
+
+    font-size: 14px;
+}
+
+
+/* لینک ها */
+
+.login-container a {
+    color: #08765a;
+
+    text-decoration: none;
+
+    font-weight: bold;
+}
+
+
+.login-container a:hover {
+    text-decoration: underline;
+}
+
+
+/* موبایل */
+
+@media (max-width: 500px) {
+
+    .login-container {
+        padding: 28px 22px;
+    }
+
+    .login-container h1 {
+        font-size: 27px;
+    }
+}
+
+
+.register-link {
+    margin-top: 22px;
+
+    font-size: 14px;
+
+    color: #4b6666;
+}
+
+
+.register-link a {
+    display: inline-block;
+
+    margin-right: 6px;
+
+    color: #078b65;
+
+    text-decoration: none;
+
+    font-weight: bold;
+}
+
+
+.register-link a:hover {
+    color: #056c50;
+
+    text-decoration: underline;
+}
+

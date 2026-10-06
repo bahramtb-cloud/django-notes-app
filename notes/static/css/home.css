@@ -1,0 +1,207 @@
+
+/* =========================
+   HOME PAGE
+========================= */
+
+body.home-page {
+    margin: 0;
+    min-height: 100vh;
+
+    direction: rtl;
+
+    font-family: Tahoma, Arial, sans-serif;
+
+    background:
+        radial-gradient(circle at top right, #ffffff 0%, transparent 35%),
+        linear-gradient(135deg, #dff8f4, #b8ece5);
+
+    color: #173b3b;
+}
+
+
+/* محتوای اصلی */
+
+.home-container {
+    width: min(900px, 90%);
+    margin: 70px auto;
+
+    padding: 45px;
+
+    background: rgba(255, 255, 255, 0.78);
+
+    border-radius: 28px;
+
+    box-shadow:
+        0 20px 50px rgba(0, 80, 80, 0.15);
+
+    text-align: center;
+
+    backdrop-filter: blur(10px);
+}
+
+
+/* عنوان */
+
+.home-container h1 {
+    margin-bottom: 35px;
+
+    font-size: 42px;
+
+    color: #123f3f;
+}
+
+
+/* متن های معمولی */
+
+.home-container p {
+    font-size: 19px;
+
+    line-height: 2;
+
+    margin: 15px 0;
+}
+
+
+/* اطلاعات شخصی */
+
+.home-info {
+    margin: 30px auto;
+
+    padding: 20px;
+
+    max-width: 500px;
+
+    background: #eefcf9;
+
+    border-radius: 18px;
+
+    box-shadow: 0 8px 20px rgba(0, 100, 100, 0.08);
+}
+
+
+/* لینک صفحه نوت ها */
+
+.notes-link {
+    display: inline-block;
+
+    margin: 25px 0;
+
+    padding: 15px 30px;
+
+    background: #078b65;
+
+    color: white;
+
+    text-decoration: none;
+
+    border-radius: 12px;
+
+    font-size: 18px;
+
+    font-weight: bold;
+
+    transition:
+        transform 0.2s,
+        background 0.2s,
+        box-shadow 0.2s;
+}
+
+
+.notes-link:hover {
+    background: #056c50;
+
+    transform: translateY(-3px);
+
+    box-shadow: 0 8px 18px rgba(0, 100, 70, 0.25);
+}
+
+
+/* دوستان */
+
+.friends-section {
+    margin-top: 35px;
+
+    padding: 25px;
+
+    background: rgba(255, 255, 255, 0.7);
+
+    border-radius: 20px;
+}
+
+
+.friends-section h2 {
+    margin-bottom: 20px;
+
+    color: #155e5e;
+}
+
+
+.friends-section ul {
+    list-style: none;
+
+    padding: 0;
+
+    margin: 0;
+}
+
+
+.friends-section li {
+    display: inline-block;
+
+    margin: 7px;
+
+    padding: 8px 15px;
+
+    background: #d9f4ef;
+
+    border-radius: 20px;
+
+    color: #175858;
+
+    transition: transform 0.2s;
+}
+
+
+.friends-section li:hover {
+    transform: translateY(-3px);
+}
+
+
+/* بخش پایانی */
+
+.home-footer {
+    margin-top: 35px;
+
+    padding-top: 25px;
+
+    border-top: 1px solid rgba(0, 80, 80, 0.15);
+}
+
+
+/* موبایل */
+
+@media (max-width: 600px) {
+
+    .home-container {
+        width: 85%;
+
+        padding: 25px;
+
+        margin: 30px auto;
+    }
+
+    .home-container h1 {
+        font-size: 30px;
+    }
+
+    .home-container p {
+        font-size: 16px;
+    }
+
+    .notes-link {
+        font-size: 16px;
+
+        padding: 12px 22px;
+    }
+}
+

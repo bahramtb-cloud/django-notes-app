@@ -1,0 +1,321 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+<title>دفترچه یادداشت</title>
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
+<body>
+
+<form method="GET">
+    <input
+    id="search-input"
+    type="text"
+    name="search"
+    placeholder="جستجوی یادداشت..."
+    value="{{ request.GET.search|default:'' }}">
+
+    <button type="submit">
+        جستجو
+    </button>
+</form>
+<hr>
+<button id="theme-btn">
+حالت شب 🌙
+</button>
+
+<button id="test-notification">
+تست نوتیفیکیشن
+</button>
+
+
+<hr>
+
+<h2>آزمایش Event Delegation</h2>
+<div id="js-test-box">
+    <button data-action="favorite">علاقه مندی⭐</button>
+    <button data-action="done">انجام شد✅</button>
+    <button data-action="delete">حذف 🗑</button>
+</div>
+
+<hr>
+
+<h2>آزمایش LocalStorage</h2>
+<input id="storage-name" type="text" placeholder="اسمت را بنویس">
+<button id="storage-save-btn">
+    ذخیره اسم
+</button>
+<button id="storage-load-btn">
+    نمایش اسم های ذخیره شده
+</button>
+<button id="storage-delete-btn">
+    پاک کردن اسم
+</button>
+<p id="storage-result"></p>
+
+<hr>
+
+<h3>ذخیره اطلاعات کاربر</h3>
+<button id="save-user-btn">
+    ذخیره اطلاعات
+</button>
+<button id="load-user-btn">
+    خواندن اطلاعات
+</button>
+<p id="user-result"></p>
+
+<hr>
+
+
+
+    <header> 
+    <h2>
+    سلام {{ user.username }} 👋
+    </h2>
+    <a href="/notes/profile/"
+    class="edit-btn">
+    پروفایل👤
+    </a>
+    <a href="/accounts/login/?next=/notes/">خروج</a>
+    </header>
+
+<div class="dashboard">
+    <h3>
+        کل یادداشت ها:
+        {{ total_notes }}
+    </h3>
+    <h3>
+        انجام شده:
+        {{ done_notes }}
+    </h3>
+    <h3>
+        باقی مانده:
+        {{ remaining_notes }}
+    </h3>
+</div>
+
+<h1 id="title">📒 دفترچه یادداشت من</h1>
+
+<p>به اولین پروژه واقعی Django خوش اومدی.</p>
+
+<div id="delete-box" class="delete-box">
+    <div class="delete-content">
+        <h3>حذف یادداشت 🗑</h3>
+        <p>
+            آیا از حذف این یادداشت مطمین هستید؟
+        </p>
+        <button id="yes-delete">
+            بله
+        </button>
+        <button id="no-delete">
+            خیر
+        </button>
+    </div>
+</div>
+
+
+
+{% if error %}
+<p class="error">
+    {{ error }}
+</p>
+{% endif %}
+
+<form method="POST">
+
+    {% csrf_token %}
+
+    <input type="text" name="title" placeholder="عنوان">
+
+    <br><br>
+
+    <input type="text" name="note" placeholder="یادداشتت را بنویس">
+
+    <button>ثبت</button>
+
+</form>
+
+{% if messages %}
+    {% for message in messages %}
+        <div class="message">
+            {{ message }}
+        </div>
+    {% endfor %}
+{% endif %}
+
+<hr>
+
+<form method="GET">
+<select name="sort">
+<option value="-created_at">
+جدیدترین
+</option>
+<option value="created_at">
+قدیمی ترین
+</option>
+</select>
+<button>
+مرتب کن
+</button>
+</form>
+<hr>
+
+<div class="filters">
+<a href="/notes/">
+همه 📋
+</a>
+<a href="/notes/?status=done">
+انجام شده✅
+</a>
+<a href="/notes/?status=undone">
+انجام نشده ❌
+</a>
+<a href="/notes/?favorite=yes"
+class="filter-btn">
+علاقه مندی ها ⭐
+</a>
+<a href="/notes/" class="filter-btn">
+دکمه ی اضافه ی همه 😂😂😂🤣🤣🤣
+</a>
+</div>
+
+<a href="/notes/export/"
+class="export-btn">
+⬇ دانلود یادداشت ها ⬇
+</a>
+
+<hr>
+
+<div class="today">
+<a href="/notes/?today=yes">
+یادداشت های امروز 📆
+</a>
+<a href="/notes/">
+تمامی یادداشت ها 📅
+</a>
+</div>
+
+<h2>یادداشت‌های من 📃</h2>
+<div class="notes-container">
+{% for note in notes %}
+
+<div class="note-card {% if note.done %} finished{% endif %}">
+<h3>{{ note.title }}</h3>
+<p>{{ note.text }}</p>
+<h4>📑Note #{{ note.id }}</h4>
+<small>{{ note.created_at|date:"Y/m/d H:i" }}</small>
+<a 
+href="/notes/done/{{ note.id }}/"
+class="done-btn"
+>
+{% if note.done %}
+انجام نشده -
+{% else %}
+انجام شده +
+{% endif %}
+</a>
+<a href="/notes/favorite/{{ note.id }}/"
+class="favorite-btn">
+{% if note.favorite %}
+مهم ⭐
+{% else %}
+مهم نیست 🕸
+{% endif %}
+</a>
+<a 
+href="/notes/edit/{{ note.id }}/"
+class="edit-btn"
+>
+ویرایش
+</a>
+<a  
+href="/notes/delete/{{ note.id }}/"
+onclick="return openDelete(this.href)"
+class="delete-btn"
+>
+حذف
+</a>
+</div>
+
+{% endfor %}
+</div>
+
+<div class="pagination">
+{% if notes.has_previous %}
+
+<a href="?page=1">اول</a>
+
+<a href="?page={{ notes.previous_page_number }}">
+قبلی
+</a>
+{% endif %}
+<span>
+صفحه
+{{ notes.number }}
+از
+{{ notes.paginator.num_pages }}
+</span>
+{% if notes.has_next %}
+<a href="?page={{ notes.next_page_number }}">
+بعدی
+</a>
+
+<a href="?page={{ notes.paginator.num_pages }}">
+آخر
+</a>
+
+{% endif %}
+</div>
+
+
+<button id="change-title">
+    تغییر عنوان
+</button>
+
+<hr>
+
+<button id="click-counter-btn">
+    کلیک کن:
+</button>
+<p id="click-counter">
+    تعداد کلیک: 0
+</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<hr>
+<h2>بازی های من </h2>
+
+<script src="{% static 'js/script.js' %}"></script>
+
+</body>
+</html>
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+

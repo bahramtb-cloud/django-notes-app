@@ -1,0 +1,49 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+
+    <title>ثبت نام</title>
+
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+</head>
+
+<body class="login-page">
+
+    <div class="login-container">
+
+        <h1>ساخت حساب کاربری 📝</h1>
+
+        <p>برای ساخت حساب جدید اطلاعات زیر را وارد کنید.</p>
+
+        <form method="post">
+
+            {% csrf_token %}
+
+            {{ form.as_p }}
+
+            <button type="submit">
+                ثبت نام
+            </button>
+
+        </form>
+
+        <div class="register-link">
+
+            <span>قبلاً حساب دارید؟</span>
+
+            <a href="/accounts/login/">
+                وارد شوید
+            </a>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>
+
