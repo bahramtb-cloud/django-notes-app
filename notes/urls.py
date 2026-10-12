@@ -1,5 +1,6 @@
 from django.urls import path
 from . import views
+from . import api
 
 urlpatterns = [
     path("", views.index),
@@ -17,6 +18,8 @@ urlpatterns = [
     path("export/", views.export_notes),
 
     path("http-test/", views.http_test),
+
+    path("api/notes/", api.notes_api, name="notes_api"),
     
 ]
 
