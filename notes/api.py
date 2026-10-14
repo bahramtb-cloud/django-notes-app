@@ -1,3 +1,4 @@
+
 from rest_framework.response import Response
 from rest_framework.decorators import (
     api_view,
@@ -16,9 +17,7 @@ def notes_api(request):
 
     if request.method == "GET":
         notes = Note.objects.filter(user=request.user)
-
         serializer = NoteSerializer(notes, many=True)
-
         return Response(serializer.data)
 
     elif request.method == "POST":
@@ -38,21 +37,65 @@ def notes_api(request):
         )
 
 
-
-@api_view(["GET"])
+@api_view(["GET", "PATCH", "PUT", "DELETE"])
 @permission_classes([IsAuthenticated])
 def note_detail_api(request, note_id):
+
     try:
         note = Note.objects.get(
             id=note_id,
-            user=request.user
+            user=request.user,
         )
+
     except Note.DoesNotExist:
         return Response(
             {"error": "Note not found"},
-            status=status.HTTP_404_NOT_FOUND
+            status=status.HTTP_404_NOT_FOUND,
         )
 
-    serializer = NoteSerializer(note)
-    return Response(serializer.data)
+    if request.method == "GET":
+        serializer = NoteSerializer(note)
+        return Response(serializer.data)
+
+    elif request.method == "PATCH":
+        serializer = NoteSerializer(
+            note,
+            data=request.data,
+            partial=True,
+        )
+
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+
+        return Response(
+            serializer.errors,
+            status=status.HTTP_400_BAD_REQUEST,
+        )
+
+    elif request.method == "PUT":
+        serializer = NoteSerializer(
+            note,
+            data=request.data,
+        )
+
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+
+        return Response(
+            serializer.errors,
+            status=status.HTTP_400_BAD_REQUEST,
+        )
+
+    elif request.method == "DELETE":
+        note.delete()
+
+        return Response(
+            {"message": "Note deleted successfully"},
+            status=status.HTTP_200_OK,
+        )
+
+
+
 
