@@ -7,7 +7,7 @@ urlpatterns = [
 
     path("edit/<int:id>/", views.edit_note),
 
-    path("delete/<int:id>/", views.delete_note),
+    path("delete/<int:id>/", views.delete_note, name="delete_note"),
 
     path("done/<int:id>/", views.done),
 

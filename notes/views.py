@@ -90,7 +90,6 @@ def index(request):
 
 @login_required
 def delete_note(request, id):
-
     note = get_object_or_404(
         Note,
         id=id,
@@ -99,7 +98,10 @@ def delete_note(request, id):
 
     note.delete()
 
-    messages.success(request, "✅ یادداشت حذف شد")
+    messages.success(
+        request,
+        "✅ یادداشت حذف شد",
+    )
 
     return redirect("/notes/")
 
@@ -118,7 +120,6 @@ def done(request, id):
 
 @login_required
 def edit_note(request, id):
-
     note = get_object_or_404(
         Note,
         id=id,
@@ -126,12 +127,13 @@ def edit_note(request, id):
     )
 
     if request.method == "POST":
-
         note.text = request.POST["note"]
-
         note.save()
 
-        messages.success(request, "✅ ویرایش انجام شد")
+        messages.success(
+            request,
+            "✅ ویرایش انجام شد",
+        )
 
         return redirect("/notes/")
 
@@ -178,18 +180,31 @@ def favorite_note(request, id):
     return redirect("/notes/") 
 
 
+@login_required
 def export_notes(request):
-    notes = Note.objects.filter(user=request.user)
-    response = HttpResponse(content_type="text/plain")
-    response["Content-Disposition"] = 'attachment; filename="notes.text"'
+    notes = Note.objects.filter(
+        user=request.user,
+    )
+
+    response = HttpResponse(
+        content_type="text/plain; charset=utf-8",
+    )
+
+    response["Content-Disposition"] = (
+        'attachment; filename="notes.txt"'
+    )
 
     for note in notes:
-
-        response.write("=================================\n")
+        response.write(
+            "=================================\n"
+        )
         response.write(f"عنوان: {note.title}\n")
-        response.write(f"متن : {note.text}\n")
-        response.write(f"تاریخ : {note.created_at}\n")
+        response.write(f"متن: {note.text}\n")
+        response.write(
+            f"تاریخ: {note.created_at}\n"
+        )
         response.write("\n")
+
     return response
 
 
