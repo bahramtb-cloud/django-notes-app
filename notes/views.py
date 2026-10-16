@@ -1,6 +1,10 @@
 # Create your views here.
 
-from django.shortcuts import render, redirect
+from django.shortcuts import (
+    render,
+    redirect,
+    get_object_or_404,
+)
 
 from django.db.models import Q
 
@@ -87,10 +91,15 @@ def index(request):
 @login_required
 def delete_note(request, id):
 
-    note = Note.objects.get(id=id)
+    note = get_object_or_404(
+        Note,
+        id=id,
+        user=request.user,
+    )
 
     note.delete()
-    messages.success(request, "✅یادداشت حذف شد")
+
+    messages.success(request, "✅ یادداشت حذف شد")
 
     return redirect("/notes/")
 
@@ -110,25 +119,29 @@ def done(request, id):
 @login_required
 def edit_note(request, id):
 
-    note = Note.objects.get(id=id)
+    note = get_object_or_404(
+        Note,
+        id=id,
+        user=request.user,
+    )
 
     if request.method == "POST":
 
         note.text = request.POST["note"]
 
         note.save()
-        messages.success(request, "✅ویرایش انجام شد")
+
+        messages.success(request, "✅ ویرایش انجام شد")
 
         return redirect("/notes/")
-
 
     return render(
         request,
         "notes/edit.html",
         {
             "note": note,
-            "user": request.user
-        }
+            "user": request.user,
+        },
     )
 
 @login_required
